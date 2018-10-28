@@ -54,87 +54,114 @@ input("Press Enter to continue...")
 # # TASK 3
 # # TODO: Create a function to add the columns (features) of a list in another list in the same order
 def column_to_list(data, index):
-    for i in range(8)
-        column_list.append()
+    column_list = []
+    for i in range(len(data)):
+        column_list.append(data[i][index])
 #     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
-#     return column_list
+    return column_list
 #
 #
 # # Let's check with the genders if it's working (only the first 20)
-# print("\nTASK 3: Printing the list of genders of the first 20 samples")
-# print(column_to_list(data_list, -2)[:20])
+print("\nTASK 3: Printing the list of genders of the first 20 samples")
+print(column_to_list(data_list, -2)[:20])
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert type(column_to_list(data_list, -2)) is list, "TASK 3: Wrong type returned. It should return a list."
-# assert len(column_to_list(data_list, -2)) == 1551505, "TASK 3: Wrong lenght returned."
-# assert column_to_list(data_list, -2)[0] == "" and column_to_list(data_list, -2)[1] == "Male", "TASK 3: The list doesn't match."
+assert type(column_to_list(data_list, -2)) is list, "TASK 3: Wrong type returned. It should return a list."
+assert len(column_to_list(data_list, -2)) == 1551505, "TASK 3: Wrong lenght returned."
+assert column_to_list(data_list, -2)[0] == "" and column_to_list(data_list, -2)[1] == "Male", "TASK 3: The list doesn't match."
 # # -----------------------------------------------------
 #
-# input("Press Enter to continue...")
+input("Press Enter to continue...")
 # # Now we know how to access the features, let's count how many Males and Females the dataset have
 # # TASK 4
 # # TODO: Count each gender. You should not use a function to do that.
-# male = 0
-# female = 0
-#
-#
+male = 0
+female = 0
+
+for i in range(len(data_list)):
+    if data_list[i][6] == "Male":
+        male += 1
+
+    elif data_list[i][6] == "Female":
+        female += 1
+
 # # Checking the result
-# print("\nTASK 4: Printing how many males and females we found")
-# print("Male: ", male, "\nFemale: ", female)
+print("\nTASK 4: Printing how many males and females we found")
+print("Male: ", male, "\nFemale: ", female)
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert male == 935854 and female == 298784, "TASK 4: Count doesn't match."
+assert male == 935854 and female == 298784, "TASK 4: Count doesn't match."
 # # -----------------------------------------------------
 #
-# input("Press Enter to continue...")
-# # Why don't we creeate a function to do that?
-# # TASK 5
-# # TODO: Create a function to count the genders. Return a list
-# # Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
-# def count_gender(data_list):
-#     male = 0
-#     female = 0
-#     return [male, female]
-#
-#
-# print("\nTASK 5: Printing result of count_gender")
-# print(count_gender(data_list))
+input("Press Enter to continue...")
+# Why don't we creeate a function to do that?
+# TASK 5
+# TODO: Create a function to count the genders. Return a list
+# Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
+def count_gender(data_list):
+    male = 0
+    female = 0
+
+    for i in range(len(data_list)):
+        if data_list[i][6] == "Male":
+            male += 1
+
+        elif data_list[i][6] == "Female":
+            female += 1
+
+    return [male, female]
+
+
+print("\nTASK 5: Printing result of count_gender")
+print(count_gender(data_list))
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert type(count_gender(data_list)) is list, "TASK 5: Wrong type returned. It should return a list."
-# assert len(count_gender(data_list)) == 2, "TASK 5: Wrong lenght returned."
-# assert count_gender(data_list)[0] == 935854 and count_gender(data_list)[1] == 298784, "TASK 5: Returning wrong result!"
+assert type(count_gender(data_list)) is list, "TASK 5: Wrong type returned. It should return a list."
+assert len(count_gender(data_list)) == 2, "TASK 5: Wrong lenght returned."
+assert count_gender(data_list)[0] == 935854 and count_gender(data_list)[1] == 298784, "TASK 5: Returning wrong result!"
 # # -----------------------------------------------------
 #
-# input("Press Enter to continue...")
+input("Press Enter to continue...")
 # # Now we can count the users, which gender use it the most?
 # # TASK 6
 # # TODO: Create a function to get the most popular gender and print the gender as string.
 # # We expect to see "Male", "Female" or "Equal" as answer.
-# def most_popular_gender(data_list):
-#     answer = ""
-#     return answer
-#
-#
-# print("\nTASK 6: Which one is the most popular gender?")
-# print("Most popular gender is: ", most_popular_gender(data_list))
+def most_popular_gender(data_list):
+    answer = ""
+
+    count_gender(data_list)
+
+    if male > female:
+        answer = "Male"
+
+    elif male < female:
+        answer = "Female"
+
+    else:
+        answer = "Equal"
+
+    return answer
+
+
+print("\nTASK 6: Which one is the most popular gender?")
+print("Most popular gender is: ", most_popular_gender(data_list))
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert type(most_popular_gender(data_list)) is str, "TASK 6: Wrong type returned. It should return a string."
-# assert most_popular_gender(data_list) == "Male", "TASK 6: Returning wrong result!"
+assert type(most_popular_gender(data_list)) is str, "TASK 6: Wrong type returned. It should return a string."
+assert most_popular_gender(data_list) == "Male", "TASK 6: Returning wrong result!"
 # # -----------------------------------------------------
 #
-# # If it's everything running as expected, check this graph!
-# gender_list = column_to_list(data_list, -2)
-# types = ["Male", "Female"]
-# quantity = count_gender(data_list)
-# y_pos = list(range(len(types)))
-# plt.bar(y_pos, quantity)
-# plt.ylabel('Quantity')
-# plt.xlabel('Gender')
-# plt.xticks(y_pos, types)
-# plt.title('Quantity by Gender')
-# plt.show(block=True)
+# If it's everything running as expected, check this graph!
+gender_list = column_to_list(data_list, -2)
+types = ["Male", "Female"]
+quantity = count_gender(data_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantity')
+plt.xlabel('Gender')
+plt.xticks(y_pos, types)
+plt.title('Quantity by Gender')
+plt.show(block=True)
 #
 # input("Press Enter to continue...")
 # # TASK 7
