@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # Let's read the data as a list
 print("Reading the document...")
-with open("../../chicago.csv", "r") as file_read:
+with open("../chicago.csv", "r") as file_read:
     reader = csv.reader(file_read)
     data_list = list(reader)
 print("Ok!")
@@ -44,17 +44,18 @@ input("Press Enter to continue...")
 #
 print("\nTASK 2: Printing the genders of the first 20 samples")
 for i in range(20):
-    print(data_list[6])
+    print(data_list[i][6])
 #
 #
-# # Cool! We can get the rows(samples) iterating with a for and the columns(features) by index.
+# # Cool! We can get the rows (samples) iterating with a for and the columns(features) by index.
 # # But it's still hard to get a column in a list. Example: List with all genders
 #
-# input("Press Enter to continue...")
+input("Press Enter to continue...")
 # # TASK 3
-# # TODO: Create a function to add the columns(features) of a list in another list in the same order
-# def column_to_list(data, index):
-#     column_list = []
+# # TODO: Create a function to add the columns (features) of a list in another list in the same order
+def column_to_list(data, index):
+    for i in range(8)
+        column_list.append()
 #     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
 #     return column_list
 #
