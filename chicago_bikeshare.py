@@ -163,39 +163,69 @@ plt.xticks(y_pos, types)
 plt.title('Quantity by Gender')
 plt.show(block=True)
 #
-# input("Press Enter to continue...")
+
+input("Press Enter to continue...")
 # # TASK 7
 # # TODO: Plot a similar graph for user_types. Make sure the legend is correct.
-# print("\nTASK 7: Check the chart!")
+print("\nTASK 7: Check the chart!")
+
+def count_user(data_list):
+    customer = 0
+    subscriber = 0
+
+    for i in range(len(data_list)):
+        if data_list[i][5] == "Customer":
+            customer += 1
+
+        elif data_list[i][5] == "Subscriber":
+            subscriber += 1
+
+    return [customer, subscriber]
+
+
+gender_list = column_to_list(data_list, -3)
+types = ["Customer", "Subscriber"]
+quantity = count_user(data_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantity')
+plt.xlabel('User Type')
+plt.xticks(y_pos, types)
+plt.title('Quantity by user type')
+plt.show(block=True)
+
+
+input("Press Enter to continue...")
+# TASK 8
+# TODO: Answer the following question
+male, female = count_gender(data_list)
+print("\nTASK 8: Why the following condition is False?")
+print("male + female == len(data_list):", male + female == len(data_list))
+answer = "Because some samples have null values."
+print("Answer:", answer)
+
+# ------------ DO NOT CHANGE ANY CODE HERE ------------
+assert answer != "Type your answer here.", "TASK 8: Write your own answer!"
+# -----------------------------------------------------
 #
-#
-# input("Press Enter to continue...")
-# # TASK 8
-# # TODO: Answer the following question
-# male, female = count_gender(data_list)
-# print("\nTASK 8: Why the following condition is False?")
-# print("male + female == len(data_list):", male + female == len(data_list))
-# answer = "Type your answer here."
-# print("Answer:", answer)
-#
-# # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert answer != "Type your answer here.", "TASK 8: Write your own answer!"
-# # -----------------------------------------------------
-#
-# input("Press Enter to continue...")
+input("Press Enter to continue...")
 # # Let's work with the trip_duration now. We cant get some values from it.
 # # TASK 9
 # # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # # You should not use ready functions to do that, like max() or min().
-# trip_duration_list = column_to_list(data_list, 2)
-# min_trip = 0.
-# max_trip = 0.
-# mean_trip = 0.
-# median_trip = 0.
+trip_duration_list = column_to_list(data_list, 2)
+min_trip = 0.
+max_trip = 0.
+mean_trip = 0.
+median_trip = 0.
+
+trip_duration_list.sort()
+print(trip_duration_list)
+min_trip = trip_duration_list[0]
 #
 #
 # print("\nTASK 9: Printing the min, max, mean and median")
-# print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
+print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
 # assert round(min_trip) == 60, "TASK 9: min_trip with wrong result!"
