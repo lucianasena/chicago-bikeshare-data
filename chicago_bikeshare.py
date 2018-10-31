@@ -214,24 +214,39 @@ input("Press Enter to continue...")
 # # TODO: Find the Minimum, Maximum, Mean and Median trip duration.
 # # You should not use ready functions to do that, like max() or min().
 trip_duration_list = column_to_list(data_list, 2)
+trip_duration_list = list(map(int, trip_duration_list))
 min_trip = 0.
 max_trip = 0.
-mean_trip = 0.
+mean_trip = 0
 median_trip = 0.
-
+summ = 0
 trip_duration_list.sort()
-print(trip_duration_list)
 min_trip = trip_duration_list[0]
+max_trip = trip_duration_list[-1]
+
+for i in range(len(trip_duration_list)):
+    summ += trip_duration_list[i]
+
+mean_trip = summ/len(trip_duration_list)
+
+if len(trip_duration_list) % 2 == 0:
+    index1 = len(trip_duration_list)/2
+    index2 = index1 - 1
+    median_trip = (trip_duration_list[index1] + trip_duration_list[index2])/2
+
+else:
+    odd_index = (len(trip_duration_list) - 1)//2
+    median_trip = trip_duration_list[odd_index]
 #
 #
 # print("\nTASK 9: Printing the min, max, mean and median")
 print("Min: ", min_trip, "Max: ", max_trip, "Mean: ", mean_trip, "Median: ", median_trip)
 #
 # # ------------ DO NOT CHANGE ANY CODE HERE ------------
-# assert round(min_trip) == 60, "TASK 9: min_trip with wrong result!"
-# assert round(max_trip) == 86338, "TASK 9: max_trip with wrong result!"
-# assert round(mean_trip) == 940, "TASK 9: mean_trip with wrong result!"
-# assert round(median_trip) == 670, "TASK 9: median_trip with wrong result!"
+assert round(min_trip) == 60, "TASK 9: min_trip with wrong result!"
+assert round(max_trip) == 86338, "TASK 9: max_trip with wrong result!"
+assert round(mean_trip) == 940, "TASK 9: mean_trip with wrong result!"
+assert round(median_trip) == 670, "TASK 9: median_trip with wrong result!"
 # # -----------------------------------------------------
 #
 # input("Press Enter to continue...")
