@@ -304,16 +304,20 @@ input("Press Enter to continue...")
 # # TASK 12 - Challenge! (Optional)
 # # TODO: Create a function to count user types without hardcoding the types
 # # so we can use this function with a different kind of data.
-print("Will you face it?")
+print("\nWill you face it? \n")
 answer = "yes"
 #
 def count_items(column_list):
     item_types = []
     count_items = []
+    new_count_list = []
+
     counting_list = Counter(column_list)
 
     for i in counting_list:
-        item_types.append([i, counting_list[i]])
+        new_count_list.append([i, counting_list[i]])
+
+    item_types, count_items = zip(*new_count_list)
 
     return item_types, count_items
 #
@@ -322,8 +326,8 @@ if answer == "yes":
     # ------------ DO NOT CHANGE ANY CODE HERE ------------
     column_list = column_to_list(data_list, -2)
     types, counts = count_items(column_list)
-    # print("\nTASK 11: Printing results for count_items()")
-    # print("Types:", types, "Counts:", counts)
-    # assert len(types) == 3, "TASK 11: There are 3 types of gender!"
-    # assert sum(counts) == 1551505, "TASK 11: Returning wrong result!"
+    print("\nTASK 11: Printing results for count_items()")
+    print("Types:", types, "Counts:", counts)
+    assert len(types) == 3, "TASK 11: There are 3 types of gender!"
+    assert sum(counts) == 1551505, "TASK 11: Returning wrong result!"
     #-----------------------------------------------------
