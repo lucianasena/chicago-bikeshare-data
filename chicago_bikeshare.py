@@ -4,6 +4,7 @@
 # Here goes the imports
 import csv
 import matplotlib.pyplot as plt
+from collections import Counter
 
 # Let's read the data as a list
 print("Reading the document...")
@@ -15,15 +16,6 @@ print("Ok!")
 # Let's check how many rows do we have
 print("Number of rows:")
 print(len(data_list))
-
-# Printing the first row of data_list to check if it worked.
-# print("Row 0: ")
-# print(data_list[0])
-# It's the data header, so we can identify the columns.
-
-# Printing the second row of data_list, it should contain some data
-# print("Row 1: ")
-# print(data_list[1])
 
 input("Press Enter to continue...")
 # TASK 1
@@ -47,17 +39,22 @@ for i in range(20):
     print(data_list[i][6])
 #
 #
-# # Cool! We can get the rows (samples) iterating with a for and the columns(features) by index.
-# # But it's still hard to get a column in a list. Example: List with all genders
-#
 input("Press Enter to continue...")
 # # TASK 3
 # # TODO: Create a function to add the columns (features) of a list in another list in the same order
 def column_to_list(data, index):
+    """
+    Function to add the columns (features) of a list in another list in the same order.
+    Args:
+          data: The data that is doing to be iterable.
+          index: The index of the column desired.
+    Returns:
+           List of the values
+    """
+
     column_list = []
     for i in range(len(data)):
         column_list.append(data[i][index])
-#     # Tip: You can use a for to iterate over the samples, get the feature by index and append into a list
     return column_list
 #
 #
@@ -99,6 +96,14 @@ input("Press Enter to continue...")
 # TODO: Create a function to count the genders. Return a list
 # Should return a list with [count_male, counf_female] (e.g., [10, 15] means 10 Males, 15 Females)
 def count_gender(data_list):
+    """
+    Function to count the genders.
+    Args:
+          data_list: The data list that is doing to be iterable.
+    Returns:
+           List with the count values of males and females
+    """
+
     male = 0
     female = 0
 
@@ -127,6 +132,14 @@ input("Press Enter to continue...")
 # # TODO: Create a function to get the most popular gender and print the gender as string.
 # # We expect to see "Male", "Female" or "Equal" as answer.
 def most_popular_gender(data_list):
+    """
+    Function to get the most popular gender and print the gender as string.
+    Args:
+          data_list: The data list that is doing to be iterable.
+    Returns:
+           A string with the popular gender.
+    """
+
     answer = ""
 
     count_gender(data_list)
@@ -170,6 +183,14 @@ input("Press Enter to continue...")
 print("\nTASK 7: Check the chart!")
 
 def count_user(data_list):
+    """
+    Function count the users.
+    Args:
+          data_list: The data list that is doing to be iterable.
+    Returns:
+           A list with the count value of each user type.
+    """
+
     customer = 0
     subscriber = 0
 
@@ -265,7 +286,7 @@ print(start_station)
 assert len(start_station) == 582, "TASK 10: Wrong len of start stations."
 # # -----------------------------------------------------
 #
-input("Press Enter to continue...")
+# input("Press Enter to continue...")
 # # TASK 11
 # # Go back and make sure you documented your functions. Explain the input, output and what it do. Example:
 # # def new_function(param1: int, param2: str) -> list:
@@ -279,25 +300,30 @@ input("Press Enter to continue...")
 #
 #       """
 #
-# input("Press Enter to continue...")
+input("Press Enter to continue...")
 # # TASK 12 - Challenge! (Optional)
 # # TODO: Create a function to count user types without hardcoding the types
 # # so we can use this function with a different kind of data.
-# print("Will you face it?")
-# answer = "no"
+print("Will you face it?")
+answer = "yes"
 #
-# def count_items(column_list):
-#     item_types = []
-#     count_items = []
-#     return item_types, count_items
+def count_items(column_list):
+    item_types = []
+    count_items = []
+    counting_list = Counter(column_list)
+
+    for i in counting_list:
+        item_types.append([i, counting_list[i]])
+
+    return item_types, count_items
 #
 #
-# if answer == "yes":
-#     # ------------ DO NOT CHANGE ANY CODE HERE ------------
-#     column_list = column_to_list(data_list, -2)
-#     types, counts = count_items(column_list)
-#     print("\nTASK 11: Printing results for count_items()")
-#     print("Types:", types, "Counts:", counts)
-#     assert len(types) == 3, "TASK 11: There are 3 types of gender!"
-#     assert sum(counts) == 1551505, "TASK 11: Returning wrong result!"
-#     # -----------------------------------------------------
+if answer == "yes":
+    # ------------ DO NOT CHANGE ANY CODE HERE ------------
+    column_list = column_to_list(data_list, -2)
+    types, counts = count_items(column_list)
+    # print("\nTASK 11: Printing results for count_items()")
+    # print("Types:", types, "Counts:", counts)
+    # assert len(types) == 3, "TASK 11: There are 3 types of gender!"
+    # assert sum(counts) == 1551505, "TASK 11: Returning wrong result!"
+    #-----------------------------------------------------
