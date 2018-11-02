@@ -8,7 +8,7 @@ from collections import Counter
 
 # Let's read the data as a list
 print("Reading the document...")
-with open("../chicago.csv", "r") as file_read:
+with open("chicago.csv", "r") as file_read:
     reader = csv.reader(file_read)
     data_list = list(reader)
 print("Ok!")
