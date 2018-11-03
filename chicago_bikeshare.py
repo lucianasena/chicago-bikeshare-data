@@ -53,7 +53,7 @@ def column_to_list(data, index):
     """
 
     column_list = []
-    for i in range(len(data)):
+    for index in range(len(data)):
         column_list.append(data[i][index])
     return column_list
 #
@@ -306,8 +306,18 @@ input("Press Enter to continue...")
 # # so we can use this function with a different kind of data.
 print("\nWill you face it? \n")
 answer = "yes"
-#
+
+
 def count_items(column_list):
+
+    """
+    Function count the users.
+    Args:
+          column_list: The data list that is doing to be iterable.
+    Returns:
+           A list with the item types and another list with the count values.
+    """
+
     item_types = []
     count_items = []
     new_count_list = []
